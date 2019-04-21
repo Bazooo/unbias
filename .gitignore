@@ -60,11 +60,11 @@ typings/
 # next.js build output
 .next
 
-# parcel cache
-.cache
+# git
+.git
 
-# parcel dist
-parcelDist
+# dist
+dist
 
 .vscode/*
 !.vscode/settings.json

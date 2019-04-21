@@ -1,0 +1,12 @@
+*.map
+.git
+coverage
+docs
+examples
+lib
+node_modules
+package-lock.json
+src
+test
+tsconfig.json
+tslint.json
