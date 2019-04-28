@@ -1,4 +1,5 @@
 *.map
+.cache
 .git
 coverage
 docs
@@ -6,6 +7,8 @@ examples
 lib
 node_modules
 package-lock.json
+playground
+playgroundDist
 src
 test
 tsconfig.json

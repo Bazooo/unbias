@@ -1,5 +1,5 @@
-import Square from './Square'
+import ShowIf from './ShowIf'
 
 export {
-  Square
+  ShowIf
 }

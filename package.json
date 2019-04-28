@@ -1,14 +1,19 @@
 {
   "name": "unbias",
-  "version": "0.0.1-alpha.1",
+  "version": "0.0.1-alpha.6",
   "description": "Unstyled UI components",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "directories": {
+    "bin": "./dist"
+  },
   "scripts": {
-    "prepare": "npm run clean && tsc && echo 'Built NPM package'",
+    "prepare": "npm run clean && npm run lint && tsc",
     "clean": "rm -rf dist",
     "test": "jest",
-    "cover": "jest --coverage && npx codecov"
+    "lint": "tslint --project \".\"",
+    "cover": "jest --coverage && npx codecov",
+    "playground": "parcel playground/index.html -d ./playgroundDist"
   },
   "repository": {
     "type": "git",
@@ -34,6 +39,7 @@
     "enzyme-adapter-react-16": "^1.12.1",
     "enzyme-to-json": "^3.3.5",
     "jest": "^24.7.1",
+    "parcel-bundler": "^1.12.3",
     "react": "^16.8.6",
     "react-axe": "^3.1.0",
     "react-dom": "^16.8.6",
@@ -43,6 +49,7 @@
     "tslint-config-standard": "^8.0.1",
     "tslint-react": "^4.0.0",
     "tslint-react-hooks": "^2.1.0",
+    "type-zoo": "^3.3.0",
     "typescript": "^3.4.4"
   },
   "dependencies": {},
