@@ -1,14 +1,17 @@
 language: node_js
 node_js:
-  - 10
-after_success:
-  - npm run cover
+  - "10"
 jobs:
   include:
-    - stage: tests
+    - stage: "tests"
+      name: "unit tests"
       script: npm t
+    - script: npm run lint
+      name: "tslint"
+    - stage: "coverage"
+      script: npm run cover
     - stage: npm release
-      if: tag IS present AND branch = master AND (NOT (type IN (push, pull_request)))
+      if: tag IS present
       node_js: "10"
       script: npm run build
       before_deploy:
