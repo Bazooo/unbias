@@ -1,21 +1,22 @@
 language: node_js
 node_js:
   - 10
-script:
-  - npm t -- --coverage
 after_success:
   - npm run cover
 jobs:
-  - stage: npm release
-    if: tag IS present
-    node_js: "10"
-    script: npm run build
-    before_deploy:
-      - cd dist
-    deploy:
-      provider: npm
-      email: "$NPM_EMAIL"
-      api_key: "$NPM_TOKEN"
-      skip_cleanup: true
-      on:
-        tags: true
+  include:
+    - stage: tests
+      script: npm t
+    - stage: npm release
+      if: tag IS present AND branch = master AND (NOT (type IN (push, pull_request)))
+      node_js: "10"
+      script: npm run build
+      before_deploy:
+        - cd dist
+      deploy:
+        provider: npm
+        email: "$NPM_EMAIL"
+        api_key: "$NPM_TOKEN"
+        skip_cleanup: true
+        on:
+          tags: true
