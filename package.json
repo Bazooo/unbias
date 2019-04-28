@@ -1,6 +1,6 @@
 {
   "name": "unbias",
-  "version": "0.0.1-alpha.10",
+  "version": "0.0.1-alpha.11",
   "description": "Unstyled UI components",
   "main": "index.js",
   "types": "index.d.ts",
@@ -14,7 +14,8 @@
     "lint": "tslint --project \".\"",
     "cover": "jest --coverage && npx codecov",
     "playground": "parcel playground/index.html -d ./playgroundDist",
-    "dist": "npm run clean && npm run lint && tsc && cp -rf package.json dist && cd dist && npm publish"
+    "package": "npm run clean && npm run lint && tsc && cp -rf package.json dist",
+    "dist": "npm run package && cd dist && npm publish"
   },
   "repository": {
     "type": "git",

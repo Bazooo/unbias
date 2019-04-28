@@ -2,6 +2,11 @@ import React from 'react'
 
 type ShowIfCondition = boolean | (() => boolean)
 
+export interface ShowIfElement {
+  condition?: ShowIfCondition
+  children: JSX.Element
+}
+
 interface ShowIfProps {
   condition: ShowIfCondition
   children: React.ReactElement<ShowIfElement> | React.ReactElement<ShowIfElement>[]
@@ -73,26 +78,6 @@ const conditionCheck = (condition?: ShowIfCondition) => {
   } else {
     return condition
   }
-}
-
-interface ShowIfElement {
-  condition?: ShowIfCondition
-  children: JSX.Element
-}
-
-export const IsTrue = ({ children }: ShowIfElement) => {
-  const {} = 'IS_TRUE'
-  return children
-}
-
-export const IsFalseAnd = ({ children }: ShowIfElement) => {
-  const {} = 'IS_FALSE_AND'
-  return children
-}
-
-export const OrElse = ({ children }: ShowIfElement) => {
-  const {} = 'OR_ELSE'
-  return children
 }
 
 export default ShowIf
