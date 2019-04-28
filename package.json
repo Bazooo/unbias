@@ -1,19 +1,20 @@
 {
   "name": "unbias",
-  "version": "0.0.1-alpha.6",
+  "version": "0.0.1-alpha.10",
   "description": "Unstyled UI components",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "directories": {
-    "bin": "./dist"
-  },
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "*/**/*.js",
+    "*/**/*.d.ts"
+  ],
   "scripts": {
-    "prepare": "npm run clean && npm run lint && tsc",
-    "clean": "rm -rf dist",
+    "clean": "rimraf dist",
     "test": "jest",
     "lint": "tslint --project \".\"",
     "cover": "jest --coverage && npx codecov",
-    "playground": "parcel playground/index.html -d ./playgroundDist"
+    "playground": "parcel playground/index.html -d ./playgroundDist",
+    "dist": "npm run clean && npm run lint && tsc && cp -rf package.json dist && cd dist && npm publish"
   },
   "repository": {
     "type": "git",
@@ -44,6 +45,7 @@
     "react-axe": "^3.1.0",
     "react-dom": "^16.8.6",
     "react-test-renderer": "^16.8.6",
+    "rimraf": "^2.6.3",
     "ts-jest": "^24.0.2",
     "tslint": "^5.16.0",
     "tslint-config-standard": "^8.0.1",
