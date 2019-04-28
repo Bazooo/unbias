@@ -112,3 +112,13 @@ exports[`ShowIf should accept functions as condition 1`] = `
   </ShowIf>
 </div>
 `;
+
+exports[`ShowIf works 1`] = `
+<Fragment>
+  <span
+    id="show"
+  >
+    works
+  </span>
+</Fragment>
+`;
