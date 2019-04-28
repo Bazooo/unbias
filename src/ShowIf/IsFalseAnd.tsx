@@ -5,6 +5,7 @@ interface IsFalseAndProps extends ShowIfElement {
 }
 
 const IsFalseAnd = ({ children }: IsFalseAndProps) => {
+  /* istanbul ignore next */
   const {} = 'IS_FALSE_AND'
   return children
 }

@@ -10,6 +10,12 @@ exports[`IsFalseAnd should accept functions as condition 1`] = `
 </Fragment>
 `;
 
+exports[`IsFalseAnd should return children 1`] = `
+<span>
+  test
+</span>
+`;
+
 exports[`IsFalseAnd should show if condition is falsy (F)[T] 1`] = `
 <Fragment>
   <span
@@ -44,6 +50,12 @@ exports[`IsFalseAnd should show only true conditions and in order (F)[T,F,T,F,T]
 </Fragment>
 `;
 
+exports[`IsTrue should return children 1`] = `
+<span>
+  test
+</span>
+`;
+
 exports[`IsTrue should show if condition is truthy 1`] = `
 <Fragment>
   <span
@@ -55,6 +67,12 @@ exports[`IsTrue should show if condition is truthy 1`] = `
 `;
 
 exports[`IsTrue should show nothing if condition is falsy 1`] = `<Fragment />`;
+
+exports[`OrElse should return children 1`] = `
+<span>
+  test
+</span>
+`;
 
 exports[`OrElse should show if condition is falsy 1`] = `
 <Fragment>

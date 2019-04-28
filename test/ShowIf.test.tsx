@@ -4,6 +4,15 @@ import { shallow } from 'enzyme'
 import ShowIf, { IsTrue, OrElse, IsFalseAnd } from '../src/ShowIf'
 
 describe('IsTrue', () => {
+  it('should return children', () => {
+    const component = shallow(
+      <IsTrue><span>test</span></IsTrue>
+    )
+
+    expect(component.find('span').exists()).toBeTruthy()
+    expect(component).toMatchSnapshot()
+  })
+
   it('should show if condition is truthy', () => {
     const component = shallow(
       <ShowIf condition={true}>
@@ -28,6 +37,14 @@ describe('IsTrue', () => {
 })
 
 describe('IsFalseAnd', () => {
+  it('should return children', () => {
+    const component = shallow(
+      <IsFalseAnd condition={true}><span>test</span></IsFalseAnd>
+    )
+
+    expect(component.find('span').exists()).toBeTruthy()
+    expect(component).toMatchSnapshot()
+  })
   it('should show if condition is falsy (F)[T]', () => {
     const component = shallow(
       <ShowIf condition={false}>
@@ -106,6 +123,15 @@ describe('IsFalseAnd', () => {
 })
 
 describe('OrElse', () => {
+  it('should return children', () => {
+    const component = shallow(
+      <OrElse><span>test</span></OrElse>
+    )
+
+    expect(component.find('span').exists()).toBeTruthy()
+    expect(component).toMatchSnapshot()
+  })
+
   it('should show if condition is falsy', () => {
     const component = shallow(
       <ShowIf condition={false}>
