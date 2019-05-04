@@ -18,6 +18,7 @@
     "noUnusedParameters": true,
     "removeComments": true,
     "preserveConstEnums": true,
+    "incremental": true
   },
   "files": [
     "src/index.ts"

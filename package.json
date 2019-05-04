@@ -15,7 +15,7 @@
     "cover": "jest --coverage && npx codecov",
     "playground": "parcel playground/index.html -d ./playgroundDist",
     "prebuild": "npm run clean && ts-node ./util/prepareDist.ts && npm run lint",
-    "build": "tsc"
+    "build": "tsc --extendedDiagnostics"
   },
   "repository": {
     "type": "git",
