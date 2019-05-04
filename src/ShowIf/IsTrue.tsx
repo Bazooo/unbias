@@ -1,6 +1,9 @@
 import { ShowIfElementProps } from './ShowIf'
+import { Omit } from 'type-zoo/types'
 
-const IsTrue = ({ children }: ShowIfElementProps) => children
+type ShowIfIsTrueProps = Omit<ShowIfElementProps, 'condition'>
+
+const IsTrue = ({ children }: ShowIfIsTrueProps) => children
 
 IsTrue.showElementType = 'IS_TRUE'
 

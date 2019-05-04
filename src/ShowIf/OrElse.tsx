@@ -1,6 +1,9 @@
 import { ShowIfElementProps } from './ShowIf'
+import { Omit } from 'type-zoo/types'
 
-const OrElse = ({ children }: ShowIfElementProps) => children
+type ShowIfOrElseProps = Omit<ShowIfElementProps, 'condition'>
+
+const OrElse = ({ children }: ShowIfOrElseProps) => children
 
 OrElse.showElementType = 'OR_ELSE'
 

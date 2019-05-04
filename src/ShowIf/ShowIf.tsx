@@ -8,7 +8,7 @@ export interface ShowIfElementProps {
 }
 
 interface ShowIfElementType {
-  (): any
+  ({ children }: ShowIfElementProps): JSX.Element
   showElementType: 'IS_TRUE' | 'IS_FALSE_AND' | 'OR_ELSE'
 }
 
