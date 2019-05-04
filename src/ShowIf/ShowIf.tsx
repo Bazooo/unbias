@@ -19,57 +19,49 @@ interface ShowIfProps {
   children: ShowIfElement | ShowIfElement[]
 }
 
+interface ShowIfChildren {
+  trueChild: JSX.Element | null
+  elseChild: JSX.Element | null
+  falseChildren: JSX.Element[]
+}
+
 const ShowIf = ({ condition, children }: ShowIfProps) => {
-  let trueChild: React.ReactElement<ShowIfElementProps> | null = null
-  let elseChild: React.ReactElement<ShowIfElementProps> | null = null
-  const falseChildren: React.ReactElement<ShowIfElementProps>[] = []
+  const defaultChildren = {
+    trueChild: null,
+    elseChild: null,
+    falseChildren: []
+  }
 
-  // The rendered children
-  let renderedChildren: JSX.Element | null = null
+  const childArray = Array.isArray(children) ? children : [children]
 
-  if (Array.isArray(children)) {
-    children.forEach((child, i) => {
-      switch (child.type.showElementType) {
-        case 'IS_TRUE':
-          trueChild = child
-          break
-        case 'IS_FALSE_AND':
-          falseChildren.push(child)
-          break
-        case 'OR_ELSE':
-          elseChild = child
-          break
-        default:
-          throw new Error(`ShowIf child[${i}] is invalid!`)
-      }
-    })
-  } else {
-    switch (children.type.showElementType) {
+  const { trueChild, elseChild, falseChildren } = childArray.reduce((result: ShowIfChildren, child, i) => {
+    switch (child.type.showElementType) {
       case 'IS_TRUE':
-        trueChild = children
-        break
+        return {
+          ...result,
+          trueChild: child.props.children
+        }
       case 'IS_FALSE_AND':
-        falseChildren.push(children)
-        break
+        if (!conditionCheck(child.props.condition)) {
+          return result
+        }
+        return {
+          ...result,
+          falseChildren: [...result.falseChildren, child.props.children]
+        }
       case 'OR_ELSE':
-        elseChild = children
-        break
+        return {
+          ...result,
+          elseChild: child.props.children
+        }
       default:
-        throw new Error(`ShowIf child is invalid!`)
+        throw new Error(`ShowIf child[${i}] is invalid!`)
     }
-  }
+  }, defaultChildren)
 
-  if (conditionCheck(condition)) {
-    renderedChildren = trueChild && trueChild.props.children
-  } else {
-    const goodFalseChildren = falseChildren.filter(falseChild => conditionCheck(falseChild.props.condition)).map(falseChild => falseChild.props.children)
+  const falseOrElse = falseChildren.length > 0 ? falseChildren : elseChild
 
-    if (goodFalseChildren.length > 0) {
-      renderedChildren = <>{goodFalseChildren}</>
-    } else {
-      renderedChildren = elseChild && elseChild.props.children
-    }
-  }
+  const renderedChildren = conditionCheck(condition) ? trueChild : falseOrElse
 
   return <>{renderedChildren}</>
 }

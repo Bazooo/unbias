@@ -235,7 +235,7 @@ describe('ShowIf', () => {
       </ShowIf>
     )
 
-    expect(wrapper).toThrowError('ShowIf child is invalid!')
+    expect(wrapper).toThrowError('ShowIf child[0] is invalid!')
   })
 
   it('should throw an error if wrong children', () => {
