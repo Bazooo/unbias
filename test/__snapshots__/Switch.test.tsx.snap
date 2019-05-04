@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Switch should allow numbers 1`] = `
+<Fragment>
+  <span
+    id="right"
+  >
+    test
+  </span>
+</Fragment>
+`;
+
+exports[`Switch should show first case on right statement 1`] = `
+<Fragment>
+  <span
+    id="right"
+  >
+    test
+  </span>
+</Fragment>
+`;
+
+exports[`Switch should show first default case 1`] = `
+<Fragment>
+  <span
+    id="right"
+  >
+    test
+  </span>
+</Fragment>
+`;
+
+exports[`Switch should show first right case 1`] = `
+<Fragment>
+  <span
+    id="right"
+  >
+    test
+  </span>
+</Fragment>
+`;
+
+exports[`Switch should show null if no default case 1`] = `<Fragment />`;
+
+exports[`Switch works 1`] = `
+<Fragment>
+  <span
+    id="first"
+  >
+    test
+  </span>
+</Fragment>
+`;
