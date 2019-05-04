@@ -1,9 +1,7 @@
-import { ShowIfElement } from './ShowIf'
+import { ShowIfElementProps } from './ShowIf'
 
-const IsTrue = ({ children }: ShowIfElement) => {
-  /* istanbul ignore next */
-  const {} = 'IS_TRUE'
-  return children
-}
+const IsTrue = ({ children }: ShowIfElementProps) => children
+
+IsTrue.showElementType = 'IS_TRUE'
 
 export default IsTrue

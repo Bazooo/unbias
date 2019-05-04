@@ -1,9 +1,7 @@
-import { ShowIfElement } from './ShowIf'
+import { ShowIfElementProps } from './ShowIf'
 
-const OrElse = ({ children }: ShowIfElement) => {
-  /* istanbul ignore next */
-  const {} = 'OR_ELSE'
-  return children
-}
+const OrElse = ({ children }: ShowIfElementProps) => children
+
+OrElse.showElementType = 'OR_ELSE'
 
 export default OrElse

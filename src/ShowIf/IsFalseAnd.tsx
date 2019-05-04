@@ -1,13 +1,11 @@
-import { ShowIfElement } from './ShowIf'
+import { ShowIfElementProps } from './ShowIf'
 
-interface IsFalseAndProps extends ShowIfElement {
-  condition: Exclude<ShowIfElement['condition'], undefined>
+interface IsFalseAndProps extends ShowIfElementProps {
+  condition: Exclude<ShowIfElementProps['condition'], undefined>
 }
 
-const IsFalseAnd = ({ children }: IsFalseAndProps) => {
-  /* istanbul ignore next */
-  const {} = 'IS_FALSE_AND'
-  return children
-}
+const IsFalseAnd = ({ children }: IsFalseAndProps) => children
+
+IsFalseAnd.showElementType = 'IS_FALSE_AND'
 
 export default IsFalseAnd

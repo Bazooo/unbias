@@ -2,30 +2,34 @@ import React from 'react'
 
 type ShowIfCondition = boolean | (() => boolean)
 
-export interface ShowIfElement {
+export interface ShowIfElementProps {
   condition?: ShowIfCondition
   children: JSX.Element
 }
 
+interface ShowIfElementType {
+  (): any
+  showElementType: 'IS_TRUE' | 'IS_FALSE_AND' | 'OR_ELSE'
+}
+
+type ShowIfElement = React.ReactElement<ShowIfElementProps, ShowIfElementType>
+
 interface ShowIfProps {
   condition: ShowIfCondition
-  children: React.ReactElement<ShowIfElement> | React.ReactElement<ShowIfElement>[]
+  children: ShowIfElement | ShowIfElement[]
 }
 
 const ShowIf = ({ condition, children }: ShowIfProps) => {
-  let trueChild: React.ReactElement<ShowIfElement> | null = null
-  let elseChild: React.ReactElement<ShowIfElement> | null = null
-  const falseChildren: React.ReactElement<ShowIfElement>[] = []
+  let trueChild: React.ReactElement<ShowIfElementProps> | null = null
+  let elseChild: React.ReactElement<ShowIfElementProps> | null = null
+  const falseChildren: React.ReactElement<ShowIfElementProps>[] = []
 
   // The rendered children
   let renderedChildren: JSX.Element | null = null
 
   if (Array.isArray(children)) {
     children.forEach((child, i) => {
-      const matchType = child.type.toString().match(/([A-Z])\w+/)
-      const childType = matchType && matchType[0]
-
-      switch (childType) {
+      switch (child.type.showElementType) {
         case 'IS_TRUE':
           trueChild = child
           break
@@ -40,9 +44,7 @@ const ShowIf = ({ condition, children }: ShowIfProps) => {
       }
     })
   } else {
-    const matchType = children.type.toString().match(/([A-Z])\w+/)
-    const childType = matchType && matchType[0]
-    switch (childType) {
+    switch (children.type.showElementType) {
       case 'IS_TRUE':
         trueChild = children
         break
